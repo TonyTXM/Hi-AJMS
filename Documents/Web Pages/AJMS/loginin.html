@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>Untitled</title>
+<script type="text/javascript" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'}]" src="lib/dojo/dojo/dojo.js"></script>
+<script type="text/javascript">
+require([
+  "dijit/dijit",
+  "dojo/parser",
+  "maqetta/space",
+  "maqetta/AppStates"
+]);
+</script>
+<script type="text/javascript" src="js/jQuery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
+<style>@import "style.css";
+</style>
+<script type="text/javascript" src="app.js"></script>
+</head>
+<body data-maq-flow-layout="true" data-maq-comptype="desktop" data-maq-ws="collapse" data-maq-appstates="{}" id="myapp">
+<div>
+    <div class="top-banner">
+       <div class="nav-logo"></div>
+        <div class="user">
+            <a href="#"><img class="u-profile" src="img/profiler.png"/></a>
+            <ul class="u-option">
+                <li class="u-triangle"></li>
+                <li class="u-register"><a href="#" onclick="_czc.push(['_trackEvent',' ','','','','']);">Sign Up</a></li>
+                <li class="u-login"><a href="#" onclick="_czc.push(['_trackEvent',' ','','','','']);">Login In</a></li>
+            </ul>
+        </div>
+    </div>
+ <script>
+(function(window, $){
+    var $user = $('.user');
+    if ($user == undefined)
+    	alert("wrong");
+	var $u_option = $('.u-option');
+	$user.mouseover(function(){
+		$u_option.show();
+	}).mouseout(function(){
+		$u_option.hide();
+	});
+    var ustat = getCookie('_ustat');
+    if (ustat == undefined) {
+        var uid = 0;
+    } else {
+        var oUstat = JSON.parse(ustat);
+        var uid = oUstat.i;
+    }
+    var selfUrl = window.location.href;
+    if (uid!=""&&uid!=0) {
+        $('.u-profile').attr("src", "img/profiler.png");
+        $('.u-register a').attr("href", "index.html");
+        $('.u-register a').attr("target", "_blank");
+        $('.u-register a').text("Profiler");
+        $('.u-login a').attr("href", "loginin.html?returnurl="+selfUrl);
+        $('.u-login a').attr("onclick", "syncScb()");
+        $('.u-login a').text("Login In");
+    } else {
+        $('.u-profile').attr("src", "img/profiler.png");
+        $('.u-register a').attr("href", "signup.html?returnurl="+selfUrl);
+        $('.u-register a').text("Sign Up");
+        $('.u-login a').attr("href", "loginin.html?returnurl="+selfUrl);
+        $('.u-login a').text("Login In");
+    }   
+})(window, jQuery);
+</script>
+
+ <div class="container">
+    <form name="form" action="#">
+        <div class="form">
+            <div class="form-item">
+                <input type="text" name="text" required="required" placeholder="User Name" autocomplete="off"/>
+            </div>
+            <div class="form-item">
+                <input type="password" name="password" required="required" placeholder="Password" autocomplete="off"/>
+            </div>
+            <div class="button-panel">
+                <input type="submit" class="button" title="Login In" value="Login In"/>
+            </div>
+        </div>
+    </form>
+</div>
+
+    <div class="footer-banner">
+        ©2016 SQL Optimizer Team
+    </div>
+</div>
+</body>
+</html>
