@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>Sign In</title>
+
+<script type="text/javascript" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'}],'themeMap':[['Android','',['themes/android/android.css']],['BlackBerry','',['themes/blackberry/blackberry.css']],['iPad','',['themes/ipad/ipad.css']],['iPhone','',['themes/iphone/iphone.css']],['.*','',['themes/iphone/iphone.css']]],'mblThemeFiles':[],'mblLoadCompatPattern':''" src="lib/dojo/dojo/dojo.js"></script>
+<script type="text/javascript">
+require([
+  "dijit/dijit",
+  "dojo/parser",
+  "maqetta/space",
+  "maqetta/AppStates"
+]);
+</script>
+<script type="text/javascript" src="js/jQuery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
+ <script>
+        var _czc = _czc || [];
+        _czc.push(["_setAccount", "1256556802"]);
+</script>
+<style>@import "style.css";
+</style>
+<script type="text/javascript" src="app.js"></script>
+</head>
+<body data-maq-flow-layout="true" data-maq-comptype="desktop" class="claro" data-maq-ws="collapse" class="home" id="myapp" data-maq-appstates="{}">
+<div>
+    <div class="top-banner">
+       <div class="nav-logo"></div>
+        <div class="user">
+            <a href="#"><img class="u-profile" src="img/profiler.png"/></a>
+            <ul class="u-option">
+                <li class="u-triangle"></li>
+                <li class="u-register"><a href="#" onclick="_czc.push(['_trackEvent',' ','','','','']);">Sign Up</a></li>
+                <li class="u-login"><a href="#" onclick="_czc.push(['_trackEvent',' ','','','','']);">Login In</a></li>
+            </ul>
+        </div>
+    </div>
+ <script>
+(function(window, $){
+    var $user = $('.user');
+    if ($user == undefined)
+    	alert("wrong");
+	var $u_option = $('.u-option');
+	$user.mouseover(function(){
+		$u_option.show();
+	}).mouseout(function(){
+		$u_option.hide();
+	});
+    var ustat = getCookie('_ustat');
+    if (ustat == undefined) {
+        var uid = 0;
+    } else {
+        var oUstat = JSON.parse(ustat);
+        var uid = oUstat.i;
+    }
+    var selfUrl = window.location.href;
+    if (uid!=""&&uid!=0) {
+        $('.u-profile').attr("src", "img/profiler.png");
+        $('.u-register a').attr("href", "index.html");
+        $('.u-register a').attr("target", "_blank");
+        $('.u-register a').text("Profiler");
+        $('.u-login a').attr("href", "loginin.html?returnurl="+selfUrl);
+        $('.u-login a').attr("onclick", "syncScb()");
+        $('.u-login a').text("Login In");
+    } else {
+        $('.u-profile').attr("src", "img/profiler.png");
+        $('.u-register a').attr("href", "signup.html?returnurl="+selfUrl);
+        $('.u-register a').text("Sign Up");
+        $('.u-login a').attr("href", "loginin.html?returnurl="+selfUrl);
+        $('.u-login a').text("Login In");
+    }   
+})(window, jQuery);
+</script>
+    <div class="container">
+        <div style="max-width:1000px; margin: 0 auto;height:100%">
+            <div class="main-left">
+                <div class="data_list">
+                    <div class="data_list_title">
+                        <img src="img/news.png"/>News
+                    </div>
+                    <div class="data">
+                        This is  home of AJMS. You must login in before you view any AJMS Server!
+                    </div>
+                </div>
+            </div>
+            <div class="main-right">
+                <div class="data-list">
+                    <img src="img/we-chat.jpg"/>
+                    <div>Scan this QR Code to Get Mobile App</div>
+                </div>
+                <div class="data-list">
+                 <span style="text-align:left">Servers</span>
+                 <span>
+                    <table>
+                    <tr><td><a href="joblist.html">AJ-SERVER-01</a></td></tr>
+                    <tr><td><a href="joblist.html">AJ-SERVER-03</a></td></tr>
+                    </table>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-banner">
+        ©2016 SQL Optimizer Team
+    </div>
+</div>
+</body></html>
